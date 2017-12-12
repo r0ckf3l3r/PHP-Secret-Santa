@@ -4,6 +4,7 @@
  * A very simple PHP based Secret Santa Script.
  *
  * @Author Carl Saggs (2011)
+ * @Modder r0ckf3l3r (2017)
  * @license MIT License
  *
  * Basic Usage:
@@ -18,14 +19,14 @@
 Class SecretSanta {
 	//Vars
 	private $item_value = 5;
-	private $mail_from = 'Santa < santa@yourdomain.com >';
-	private $mail_title = 'Secret Santa';
+	private $mail_from = 'Pai Natal < r0ckf3l3r@gmail.com >';
+	private $mail_title = 'Pai Natal Secreto - Foi o Destino que os uniu, mas agora p#7@ que o pariu!';
 	//Logging
 	private $sent_emails = array();
-	
+
 	/**
 	 * Run
-	 * runs the secret santa script on an array of users. 
+	 * runs the secret santa script on an array of users.
 	 * Everyone is assigned their secret santa and emailed with who they need to buy for.
 	 * @param $users Array
 	 * @return success
@@ -39,7 +40,7 @@ Class SecretSanta {
 		$this->sendEmails($matched);
 		return true;
 	}
-	
+
 	/**
 	 * Validate Array
 	 * Ensure array is safe to use in Secret Santa Script
@@ -70,7 +71,7 @@ Class SecretSanta {
 	public function setTitle($title){
 		$this->mail_title = $title;
 	}
-	
+
 	/**
 	 * Set the price secret santa items should be around
 	 * @param $price (in £'s)
@@ -78,7 +79,7 @@ Class SecretSanta {
 	public function setAmount($price){
 		$this->item_value = $price;
 	}
-	
+
 	/**
 	 * Set who your want the email to be sent from
 	 * @param $name Name of Sender (e.g. Santa)
@@ -87,7 +88,7 @@ Class SecretSanta {
 	public function setFrom($name,$email){
 		$this->mail_from = "{$name} < {$email} >";
 	}
-	
+
 	/**
 	 * Assign every user in the array their secret santa
 	 * Ensuring that everyone is assigned randomly and doesn't get themselves
@@ -124,14 +125,14 @@ Class SecretSanta {
 						$givers[$uid]['giving_to'] = $givers[0]['giving_to'];
 						$givers[0]['giving_to'] = $givers[$uid];
 						$not_assigned = false;
-					} 
+					}
 				}
 			}
 		}
 		//Return array of matched users
 		return $givers;
 	}
-	
+
 	/**
 	 * Send Emails
 	 * Emails all matched users with details of who they should be buying for.
@@ -141,21 +142,22 @@ Class SecretSanta {
 		//For each user
 		foreach($assigned_users as $giver){
 			//Send the following email
-			$email_body = "Hello {$giver['name']}, 
-				For Secret Santa this year you will be buying a present for {$giver['giving_to']['name']} ({$giver['giving_to']['email']})
+			$email_body = "Olá {$giver['name']},
+				Para o Pai Natal Secreto desde ano, vais comprar um presente ao/à {$giver['giving_to']['name']}
 
-				Presents should all be around £{$this->item_value},
+				Os presentes devem todos ser até mais/menos €{$this->item_value},
 
-				Good luck and Merry Christmas,
-				Santa
-				"; 
+				Boa Sorte e Feliz Natal,
+				Pai Natal
+				";
 			//Log that its sent
 			$this->sent_emails[] = $giver['email'];
 			//Send em via normal PHP mail method
-			mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
-		}	
+			//mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
+			mail("r0ckf3l3r@gmail.com", $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
+		}
 	}
-	
+
 	/**
 	 * Get Sent Emails
 	 * Return the list of emails that have been sent via the script

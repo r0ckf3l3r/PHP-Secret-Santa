@@ -1,9 +1,9 @@
 # PHP Secret Santa #
-A simple online PHP Secret Santa Appliction.
+A simple online PHP Secret Santa Appliction. Forked from thybag, sprinkled with additional touches for the "Foi o Destino que os uniu, mas agora p#7@ que o pariu!" Facebook group by r0ckf3l3r.
 
-To deploy the PHP Secret Santa Application on to your own PHP Enabled webhost, simply upload the index.php and SecretSanta.class.php files in to be web accessible directory on your site. 
+To deploy the PHP Secret Santa Application on to your own PHP Enabled webhost, simply upload the index.php and SecretSanta.class.php files in to be web accessible directory on your site.
 
-Its recommended that you update the "from" address used in the tool by changing the value on line 34 of index.php to use an email address relevant to your site.
+Its recommended that you update the "from" address used in the tool by changing the value on line 45 of index.php to use an email address relevant to your site.
 
     $santa->setFrom('Name of Sender','email_of_sender@yoursite.com');
 
@@ -18,7 +18,7 @@ A basic example of SecretSanta.class.php's usage is:
             array('name'=>'Dave Daveworth', 'email'=> 'dave@davenet.sample')
         )
     );
-	
+
 ### Licence
 
 PHP Secret Santa is free to use/run/modify/redistribute/break under the terms of the MIT License.

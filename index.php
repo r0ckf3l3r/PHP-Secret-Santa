@@ -4,9 +4,10 @@
  * A very simple PHP based Secret Santa Script.
  *
  * @Author Carl Saggs (2011)
+ * @Modder r0ckf3l3r (2017)
  * @license MIT License
  */
- 
+
 //Very very basic email validation (basically, does it contain an '@')
 function badEmailValidate($email){
 	if(strpos($email,'@') != false) return true;
@@ -30,18 +31,18 @@ if($_POST['count'] && $_POST['count'] > 0){
 	if(sizeof($users)<2) die("Only one valid user was detected. Please ensure you fill out the form fully.");
 	//Ensure we aren't going to send to many emails.
 	if(sizeof($users)>30) die("Sorry, but due to risk of spamming this script is limited on only allow secret santa's of up to 30 people.");
-	
+
 	//Get spend amount
 	$amount = (int) $_POST['amount'];
-	
+
 	//Get Secret Santa Class
 	require ('Santa.class.php');
 
 	//Create Object and set values
 	$santa = new SecretSanta();
 	$santa->setAmount($amount);
-	$santa->setTitle('Secret Santa');//Title of emails sent by tool
-	$santa->setFrom('Santa','santa@myDomain.com');//Address emails claim to be sent from.
+	$santa->setTitle('Pai Natal Secreto - Foi o Destino que os uniu, mas agora p#7@ que o pariu!');//Title of emails sent by tool
+	$santa->setFrom('Pai Natal','r0ckf3l3r@gmail.com');//Address emails claim to be sent from.
 
 	//Run on $users, and show Success message on success
 	if($santa->run($users)){
@@ -80,7 +81,7 @@ if($_POST['count'] && $_POST['count'] > 0){
 				width:300px;
 				padding:2px 5px;
 				float:left;
-				
+
 			}
 			.block {
 				margin:6px;
@@ -105,13 +106,13 @@ if($_POST['count'] && $_POST['count'] > 0){
 				border: solid 1px #f2f2f2;
 				padding:5px;
 				display:inline-block;
-				
+
 			}
 			.block .row .seg{
 				*float:left;
 			}
 			form {margin:0;padding:0;}
-			
+
 			.right {
 				text-align:right;
 			}
@@ -147,13 +148,13 @@ if($_POST['count'] && $_POST['count'] > 0){
 			.right_under a {color:#666;}
 		</style>
 		<script type='text/javascript'>
-		
+
 			var tmp_dom = null;
 			var counter = 1;
 			function addUser(){
 				//Store tmp object for creation of more (if one isnt already stored)
 				if(tmp_dom == null) tmp_dom = document.getElementById('insert_zone').children[0];
-				
+
 				//Create new node
 				new_node = tmp_dom.cloneNode(true);
 				//Blank inputs and update form ID's
@@ -202,17 +203,17 @@ if($_POST['count'] && $_POST['count'] > 0){
 					<div class='header'>Setup</div>
 					<div class='row'>
 						<div class='seg'>Amount to pay:</div>
-						£<input name='amount' value='5'>
+						ï¿½<input name='amount' value='5'>
 					</div>
 				</div>
 				<p>
 				Please take care when filling out each persons email address as if its entered wrong they won't know who they have for secret santa.
 				Due to the risk of spamming, this script is limited to allow a maximum of 30 participants.</p>
 				<input type='hidden' id='count' name='count' value='0' />
-			  
+
 				<input class='run' type='submit' value='Send!' onclick='confirm("Are you sure you want to send the secret santa emails now?")'/>
 			</form>
-			
+
 		</div>
 		<p class='right_under'>
 			Created by <a href='http://userbag.co.uk' target='_blank'>Userbag.co.uk</a>
