@@ -41,8 +41,8 @@ if($_POST['count'] && $_POST['count'] > 0){
 	//Create Object and set values
 	$santa = new SecretSanta();
 	$santa->setAmount($amount);
-	$santa->setTitle('Pai Natal Secreto - Foi o Destino que os uniu, mas agora p#7@ que o pariu!');//Title of emails sent by tool
-	$santa->setFrom('Pai Natal','r0ckf3l3r@gmail.com');//Address emails claim to be sent from.
+	$santa->setTitle('Pai Natal Secreto');//Title of emails sent by tool
+	$santa->setFrom('Pai Natal','santa@northpole.com');//Address emails claim to be sent from.
 
 	//Run on $users, and show Success message on success
 	if($santa->run($users)){

@@ -19,8 +19,8 @@
 Class SecretSanta {
 	//Vars
 	private $item_value = 5;
-	private $mail_from = 'Pai Natal < r0ckf3l3r@gmail.com >';
-	private $mail_title = 'Pai Natal Secreto - Foi o Destino que os uniu, mas agora p#7@ que o pariu!';
+	private $mail_from = 'Pai Natal < santa@northpole.com >';
+	private $mail_title = 'Pai Natal Secreto';
 	//Logging
 	private $sent_emails = array();
 
@@ -153,8 +153,7 @@ Class SecretSanta {
 			//Log that its sent
 			$this->sent_emails[] = $giver['email'];
 			//Send em via normal PHP mail method
-			//mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
-			mail("r0ckf3l3r@gmail.com", $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
+			mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
 		}
 	}
 
